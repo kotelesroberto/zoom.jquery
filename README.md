@@ -8,6 +8,7 @@ Coded by Robert Koteles, Senior Frontend Developer, 2015. This plugin was coded 
 
 ## Demo
 
+ - [Simple demo](http://domainforssl.hu/portfolio/robertkoteles/solutions/zoom.jquery/)
  - [Fully working live page](https://www.vesuvius.com/en/about-us/where-we-operate.html)
  - [Fully working page on Internet Archive](https://web.archive.org/web/20171001151331/https://www.vesuvius.com/en/about-us/where-we-operate.html)
  - [Plugin](https://www.vesuvius.com/etc/designs/vesuvius/corporate/scripts/plugins/jquery.zoom.bs.js)
