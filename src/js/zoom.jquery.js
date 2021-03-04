@@ -496,14 +496,26 @@
         }
 
 
-        _this.mousewheel(function(event, delta) {
+        function extractDelta(e) {  
+            if (e.wheelDelta) {
+                return e.wheelDelta;
+            }
+            if (e.originalEvent.detail) {
+                return e.originalEvent.detail * -40;
+            }
+            if (e.originalEvent && e.originalEvent.wheelDelta) {
+                return e.originalEvent.wheelDelta;
+            }
+        }
+        _this.bind('mousewheel DOMMouseScroll', (event) => { 
 
             if (!_this.hasClass('stopZoom')) {
                 event.stopPropagation();
                 event.preventDefault();
+                let delta = extractDelta(event);
+                delta = delta > 0 && delta != 0 ? 1 : -1;
                 zooming(_this, event, delta);
             }
-
         });
 
         function resetSettings() {
@@ -904,7 +916,8 @@
             }
 
             // _delta  is +1 or -1
-            settings.zoomLevel += (settings.zoomLevel * (_delta * _event.deltaFactor / 1000));
+            let deltaFactor = Math.abs(_event.originalEvent.deltaY);
+            settings.zoomLevel += (settings.zoomLevel * (_delta * deltaFactor/ 1000));
 
             if (settings.zoomLevel < settings.minZoomLevel) {
                 settings.zoomLevel = settings.minZoomLevel;
