@@ -220,8 +220,10 @@
 
         function logTouchPosition(event) {
             event = event || window.event; //For IE
-            currentMousePos.x = event.pageX;
-            currentMousePos.y = event.pageY;
+            if( event.pageX) currentMousePos.x = event.pageX;
+            else currentMousePos.x = event.touches[0].pageX;
+            if( event.pageY) currentMousePos.y = event.pageY;
+            else currentMousePos.y = event.touches[0].pageY;
         }
 
         function dragWithFinger(event) {
